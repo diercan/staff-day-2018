@@ -1,0 +1,31 @@
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Location</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let client of (clients | async)">
+      <td class="avatar"><img [src]="getAvatarUrl(client)"></td>
+      <td>{{client.firstName}} {{client.lastName}}</td>
+      <td>{{client.country === 0 ? 'Germany' : client.country === 1 ? 'United Kingdom' : undefined}}</td>
+      <td class="operations">
+        <a [routerLink]="[client.id]" class="primary">Edit</a>
+        <button (click)="removeClient(client)" class="negative">Remove</button>
+      </td>
+    </tr>
+  </tbody>
+
+  <tfoot>
+    <tr>
+      <th colspan="4" class="operations">
+        <a routerLink="new" class="primary">Add client</a>
+      </th>
+    </tr>
+  </tfoot>
+
+</table>

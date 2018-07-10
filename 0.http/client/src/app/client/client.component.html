@@ -1,0 +1,27 @@
+<form *ngIf="model | async; let model" ngNativeValidate (ngSubmit)="save(model)">
+  <fieldset>
+    <legend>Personal information</legend>
+
+    <div class="row">
+      <input type="text" placeholder="First name" name="firstName" [(ngModel)]="model.firstName" required>
+      <input type="text" placeholder="Last name" name="lastName" [(ngModel)]="model.lastName" required>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Address</legend>
+
+    <div class="row">
+      <select name="country" [(ngModel)]="model.country">
+        <option [ngValue]="undefined" disabled hidden>Country</option>
+        <option [ngValue]="0">Germany</option>
+        <option [ngValue]="1">United Kingdom</option>
+      </select>
+      <input type="text" placeholder="Postal code" name="postalCode" [(ngModel)]="model.postalCode">
+    </div>
+  </fieldset>
+
+  <a routerLink="../">Cancel</a>
+  <button type="submit" class="primary">Save</button>
+
+</form>

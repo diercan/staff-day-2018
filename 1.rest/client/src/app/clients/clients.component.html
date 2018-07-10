@@ -1,0 +1,32 @@
+<table *ngIf="clients | async; let clients">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Location</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let client of clients.resources">
+      <!-- TODO: No avatar -->
+      <td class="avatar"><img [attr.alt]="getAvatarLink(client).title" [src]="getAvatarLink(client).href"></td>
+      <td>{{client.properties.firstName}} {{client.properties.lastName}}</td>
+      <td>{{client.properties.country === 0 ? 'Germany' : client.properties.country === 1 ? 'United Kingdom' : undefined}}</td>
+      <td class="operations">
+        <a *ngIf="canEditClient(client)" [routerLink]="['/', 'edit', getClientEditLink(client).href]" class="primary">Edit</a>
+        <button *ngIf="canRemoveClient(client)" (click)="removeClient(client)" class="negative">Remove</button>
+      </td>
+    </tr>
+  </tbody>
+
+  <tfoot>
+    <tr>
+      <th colspan="4" class="operations">
+        <a *ngIf="canAddClient(clients)" [routerLink]="['/', 'edit', getClientAddLink(clients).href]" class="primary">Add client</a>
+      </th>
+    </tr>
+  </tfoot>
+
+</table>

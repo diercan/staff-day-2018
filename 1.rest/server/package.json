@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "version": "0.0.0",
+  "scripts": {
+    "build:watch": "tsc -w",
+    "start": "nodemon --debug --watch src -e ts --exec \"tsc && node dist/main.js\""
+  },
+  "license": "MIT",
+  "dependencies": {
+    "node-uuid": "^1.4.8",
+    "restify": "^7.2.1",
+    "restify-cors-middleware": "1.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^10.5.0",
+    "@types/node-uuid": "0.0.28",
+    "@types/restify": "^7.2.1",
+    "@types/restify-cors-middleware": "^1.0.1",
+    "media-types": "file:../media-types",
+    "nodemon": "^1.11.0",
+    "typescript": "^2.1.4"
+  }
+}
