@@ -1,0 +1,53 @@
+{
+  graphQLHub
+  github {
+    user(username: "diercan") {
+      login
+      id
+      avatar_url
+    }
+    repo(ownerUsername: "diercan", name: "staff-day-2018") {
+      id
+      name
+      issues(limit: 1) {
+        id
+        state
+        title
+      }
+      branches(limit: 1) {
+        name
+        lastCommit {
+          ...commit
+        }
+      }
+      commits(limit: 1) {
+        ...commit
+      }
+    }
+  }
+}
+
+fragment status on GithubStatus {
+  state
+  description
+  target_url
+  context
+  updated_at
+}
+
+fragment commit on GithubCommit {
+  sha
+  message
+  status {
+    ...status
+  }
+  author {
+    ... on GithubUser {
+      login
+      id
+    }
+    ... on GithubCommitAuthor {
+      email
+    }
+  }
+}

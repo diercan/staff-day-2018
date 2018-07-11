@@ -1,0 +1,10 @@
+query seeRepoCommits{
+  github{
+    repo(name:"staff-day-2018", ownerUsername:"diercan"){
+      commits{
+        message,
+        date
+      }
+    }
+  }
+}

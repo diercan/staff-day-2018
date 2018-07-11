@@ -1,0 +1,16 @@
+query seeRepoCommits($name: String!, $user: String!){
+  github{
+    repo(name:$name, ownerUsername:$user){
+      commits{
+        message,
+        date
+      }
+    }
+  }
+}
+
+
+{
+  "name": "staff-day-2018",
+  "user": "diercan"
+}
